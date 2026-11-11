@@ -1,0 +1,115 @@
+﻿CONTADOR FORTNITE ÚNICO
+=======================
+
+Um só programa (ChestCounter.exe) que faz tudo:
+
+  - Lê as repetições do Fortnite e conta sozinho cada partida: baús, vitórias, derrotas,
+    eliminações (kills), nº de partidas e tempo de jogo.
+  - Mostra o overlay no jogo (Ctrl+Shift+O mostra/esconde, Ctrl+Shift+L bloqueia).
+  - Gera os cartões para o OBS (os mesmos overlay-obs.html e overlay-stats.html de antes).
+  - Aceita as teclas do Stream Deck (F13 a F24) para corrigir valores e subir o nível.
+
+Já não precisas do AutoHotkey nem do contador-baus.ahk.
+
+1) Compilar (uma vez)
+---------------------
+Não consegui compilar aqui, por isso o .exe ainda não existe: tens de o gerar no teu PC.
+  a) Instala o .NET 10 SDK: https://dotnet.microsoft.com/download/dotnet/10.0
+  b) Duplo clique em COMPILAR.bat
+  c) No fim aparece ChestCounter.exe nesta pasta, ao lado do baus.ini.
+Se der erro de compilação, copia a mensagem e envia-ma que eu corrijo.
+
+2) Primeira execução
+--------------------
+Abre o ChestCounter.exe. Ao arrancar pela primeira vez ele importa o baus.ini
+(vitórias, derrotas, kills, partidas, tempo, nível, nome, temporada e total de baús)
+e guarda tudo em %APPDATA%\ChestCounter\manual.json. Daí em diante o baus.ini já não é usado.
+Só contam partidas jogadas DEPOIS de 09/11/2026 17:29 UTC (campo "Since" do manual.json),
+para não somar duas vezes o que já estava contado à mão.
+Ativa as repetições no Fortnite: Definições > Jogo > Repetições > Gravar repetições.
+
+3) OBS
+------
+Ficheiros em %APPDATA%\ChestCounter\obs (aba Ajustes > "Abrir a pasta dos ficheiros OBS"):
+  overlay-obs.html   (baús, vitórias, derrotas)
+  overlay-stats.html (cartão de estatísticas)
+Nas fontes de navegador do OBS usa "ficheiro local" apontando para esses dois.
+Os valores atualizam-se sozinhos depois de cada partida (e durante a partida, se o ChestCounter
+conseguir ler a repetição em curso).
+
+4) Stream Deck / teclas (globais, só F13 a F24 para não chocarem com o jogo)
+---------------------------------------------------------------------------
+  F13 / Ctrl+F13   baús +1 / -1          F18 / Ctrl+F18 / Shift+F18   nível +1 / -1 / +10
+  F14 / Ctrl+F14   vitórias +1 / -1      F19 / Ctrl+F19               tempo +10 min / -10 min
+  F15 / Ctrl+F15   derrotas +1 / -1      F20   atualizar já
+  F16 / Ctrl+F16   kills +1 / -1         F21   abrir o manual.json no Bloco de notas
+  F17 / Ctrl+F17   partidas +1 / -1      F22   mostrar / esconder o overlay do jogo
+Importa StreamDeck\Contador-de-Baus.streamDeckProfile (já usa estas teclas; ícones em StreamDeck\icones).
+Estas teclas servem para CORRIGIR: o contador já soma sozinho. As antigas "Nova partida",
+"Repor", "Editar" e "Fechar" já não existem (editar nível/nome/temporada: aba Ajustes).
+
+6) Todas as estatísticas das repetições (novo)
+-----------------------------------------------
+Além de baús, o programa agora lê de cada repetição, para o jogador que a gravou:
+  eliminações, assistências, precisão, dano a jogadores (arma + outro), dano recebido, dano a estruturas,
+  reanimações, materiais recolhidos e usados, distância percorrida, posição final, nº de jogadores e duração.
+Onde aparecem:
+  - matches.csv (em %APPDATA%\ChestCounter): uma linha por partida com todas as colunas.
+  - report.html: colunas Kills e Dano na tabela das últimas partidas.
+  - Início do contador: linha "Combat" com os totais.
+  - OBS: o dados.js ganha assistencias, danoJogadores, danoRecebido, danoEstruturas, revives,
+    materiaisRecolhidos, materiaisUsados, precisao, distanciaBruta; o overlay-stats.html mostra Damage, Assists e Accuracy.
+Na primeira execução o programa volta a ler todas as repetições que ainda estão no PC (versão de análise nova),
+por isso pode demorar um pouco. O Fortnite só guarda as repetições mais recentes: partidas já apagadas não têm estas estatísticas.
+Por confirmar com repetições reais: a escala da precisão (fração ou %: o programa aceita as duas) e a unidade da distância
+(guardada tal como vem na repetição, "distancia_bruta").
+
+Valores iniciais do baus.ini (atualizados a 09/11/2026 23:46)
+-------------------------------------------------------------
+Baús totais 1811, partidas 371, melhor 1017, kills 1656 (1651 + 5 da partida), vitórias 103, derrotas 268 (K/D 6,18; 27,8% vitórias).
+As chaves novas total= e melhor= do baus.ini sobrepõem-se à soma do hist=. O campo desde= foi posto em 09/11/2026 23:46 UTC.
+Para o contador voltar a importar estes valores, recompila (COMPILAR.bat) e apaga %APPDATA%\ChestCounter\manual.json antes de abrir.
+
+Nível da conta automático (novo)
+--------------------------------
+Depois de cada partida o contador lê o nível da conta na repetição e, se subiu (até +10 de cada vez), atualiza-o sozinho e guarda-o.
+F18 / Ctrl+F18 / Shift+F18 e a aba Ajustes continuam a servir para corrigir. Não consegui testar com repetições reais:
+se o nível não mudar depois de subires, avisa-me e vejo que campo a tua versão do Fortnite usa.
+
+Overlay no jogo com todas as estatísticas (novo)
+-------------------------------------------------
+Novo estilo "cartes / cards" (textos em português, também no cartão de estatísticas do OBS): nível da conta no topo e cartões coloridos com baús (total e partida), vitórias, % de vitórias,
+partidas, K/D, kills por partida, kills, tempo de jogo, tempo médio, dano, assistências e precisão (igual ao cartão do OBS).
+Para o ativar: Ajustes > Estilo do overlay (Enter) até aparecer "cartes / cards". É o estilo por defeito numa instalação nova.
+Atualiza sozinho depois de cada partida. Os valores iniciais do baus.ini foram acertados com o nível 164 e 67 h 12 min de jogo.
+
+Português (novo)
+----------------
+O programa passou a ter português como 4.º idioma (menus, consola, relatório, overlay, avisos).
+Para o ativar: Ajustes > Idioma (Enter) até aparecer "Português", ou abre o ChestCounter.exe com --lang pt.
+Os textos do overlay em modo "cartes / cards" e do cartão de estatísticas do OBS já estavam em português.
+
+Editar tudo à mão (novo)
+------------------------
+Em Ajustes há agora linhas com ✎ para escrever à mão: baús no total, melhor marca, partidas, vitórias, derrotas, kills, tempo de jogo,
+dano, assistências e precisão (além de nível, nome e temporada). Escreves o valor que queres ver e o contador passa a somar as partidas
+seguintes a partir dele. O tempo aceita 67:12 ou 67h12. A precisão mistura o valor escrito com a das repetições novas.
+
+5) Notas
+--------
+- O contador desliga a verificação de atualizações do GitHub: esta é uma versão personalizada
+  e a oficial substituiria o programa.
+- O relatório (report.html) continua a contar só o que vem das repetições; o total do overlay e
+  do OBS inclui o teu histórico anterior.
+- Os baús aparecem uns segundos depois de a partida acabar (o Fortnite só fecha a repetição no fim).
+- Licença do ChestCounter (MIT) e das bibliotecas: pasta fonte (LICENSE e lib\LICENSE-FortniteReplayDecompressor).
+
+7) Definições separadas por perfil (várias contas)
+--------------------------------------------------
+Cada conta (perfil) tem o seu próprio manual.json: nome, temporada, nível e valores de partida
+(vitórias, derrotas, kills, baús, tempo...). As teclas do Stream Deck e o menu de Ajustes mudam só o
+perfil que estiver ativo ("Mudar de perfil" no início).
+  - A primeira conta que o programa vê fica com o manual.json que já tinhas.
+  - Cada conta nova cria %APPDATA%\ChestCounter\manual-<conta>.json, a zero e com o nome da conta; conta todas as
+    repetições dessa conta. Edita esse ficheiro (ou os Ajustes) para pôr os valores de partida.
+  - O overlay (estilo, tamanho, posição) e o idioma continuam a ser iguais para todas as contas.

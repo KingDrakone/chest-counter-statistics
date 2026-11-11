@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Contador de baús – OBS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap">
+<style>
+html,body{margin:0;background:transparent;overflow:hidden}
+.box{display:inline-flex;align-items:center;gap:14px;padding:8px 14px;font-family:"Lilita One","Arial Rounded MT Bold","Arial Black",sans-serif}
+img{height:96px;width:auto;display:block}
+.col{display:flex;flex-direction:column}
+.num{font-size:84px;line-height:1;color:#ffc938;-webkit-text-stroke:6px #1d1550;paint-order:stroke fill;text-shadow:0 4px 0 #1d1550}
+.lbl{font-size:22px;color:#fff;-webkit-text-stroke:5px #1d1550;paint-order:stroke fill}
+.top{display:flex;align-items:center;gap:20px}
+.wl{display:flex;flex-direction:column;line-height:1.05}
+.win{font-size:30px;color:#fff;-webkit-text-stroke:6px #1d1550;paint-order:stroke fill}
+.loss{color:#ff8a8a}
+.ln{white-space:nowrap;display:flex;align-items:center;gap:8px}
+.ln svg{width:1.05em;height:1.05em;flex:none;overflow:visible;stroke:#1d1550;stroke-width:3.5;paint-order:stroke fill;stroke-linejoin:round}
+.sep{opacity:.7}
+.mi{height:1.2em;width:auto}
+.pop{animation:pop .3s ease-out}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.15)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<div class="box">
+  <img id="ico" src="bau-obs.png" alt="">
+  <div class="col">
+    <div class="top"><div class="num" id="n">0</div><div class="wl"><div class="win ln" id="wl"><svg viewBox="0 0 24 24" fill="#ffc938"><path d="M6 3h12v3h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 15.9V18h3v3H8v-3h3v-2.1A5 5 0 0 1 7.3 13H7a4 4 0 0 1-4-4V6h3V3zM5 8v1a2 2 0 0 0 2 2V8H5zm12 0v3a2 2 0 0 0 2-2V8h-2z"/></svg><span id="w">Vitórias 0</span></div><div class="win loss ln" id="dl"><svg viewBox="0 0 24 24" fill="#ff8a8a"><path d="M12 2C7 2 3.5 5.4 3.5 10c0 2.6 1.2 4.4 3 5.5V19a1.5 1.5 0 0 0 1.5 1.5h1v-2h1.5v2h2v-2H14v2h2a1.5 1.5 0 0 0 1.5-1.5v-3.5c1.8-1.1 3-2.9 3-5.5C20.5 5.4 17 2 12 2zM8.5 8.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm7 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM12 13l1.4 2.5h-2.8z"/></svg><span id="d">Derrotas 0</span></div></div></div>
+    <div class="lbl ln" id="r"><span class="ln"><img class="mi" src="bau-obs.png" alt=""><span id="rt">Baús Totais 0</span></span><span class="sep">|</span><span class="ln"><svg viewBox="0 0 24 24" fill="#5cf0f2"><path d="M7 6h10a5 5 0 0 1 4.9 4l.9 5a3 3 0 0 1-5.2 2.4L16 15H8l-1.6 2.4A3 3 0 0 1 1.2 15l.9-5A5 5 0 0 1 7 6zm.5 3v1.5H6V12h1.5v1.5H9V12h1.5v-1.5H9V9H7.5zm9.5.5a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zm2.4 2.4a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/></svg><span id="rp">Partidas 0</span></span><span class="sep">|</span><span class="ln"><svg viewBox="0 0 24 24" fill="#ffc938"><path d="M12 2l3 6.500 7 .8-5.200 4.800 1.400 7L12 17.600 5.800 21.100l1.400-7L2 9.300l7-.8z"/></svg><span id="rb">Melhor 0</span></span></div>
+    <div class="lbl ln" id="m"><svg viewBox="0 0 24 24" fill="#ffffff"><path d="M9 2h6l1 4v3H8V6zM8 10h8v12H8z"/></svg><span id="mt">Munição: 0</span></div>
+  </div>
+</div>
+<script>
+var T={
+  fr:{w:"Victoires ",d:"Défaites ",t:"Coffres totaux ",p:"Parties ",b:"Meilleur ",m:"Munitions : "},
+  en:{w:"Wins ",d:"Losses ",t:"Total chests ",p:"Matches ",b:"Best ",m:"Ammo: "},
+  es:{w:"Victorias ",d:"Derrotas ",t:"Cofres totales ",p:"Partidas ",b:"Mejor ",m:"Munición: "},
+  pt:{w:"Vitórias ",d:"Derrotas ",t:"Baús Totais ",p:"Partidas ",b:"Melhor ",m:"Munição: "}
+};
+var ultimo = null;
+function aplicar(d){
+  if (!d) return;
+  var x = T[d.idioma] || T.pt;
+  var n = document.getElementById("n");
+  n.textContent = d.cur;
+  document.getElementById("w").textContent = x.w + (d.vitorias || 0);
+  document.getElementById("d").textContent = x.d + (d.derrotas || 0);
+  document.getElementById("rt").textContent = x.t + d.total;
+  document.getElementById("rp").textContent = x.p + d.partidas;
+  document.getElementById("rb").textContent = x.b + d.melhor;
+  var m = document.getElementById("m");
+  m.style.display = (d.caixas === undefined) ? "none" : "flex";
+  document.getElementById("mt").textContent = x.m + (d.caixas || 0);
+  if (ultimo !== null && d.cur > ultimo) {
+    var i = document.getElementById("ico");
+    i.classList.remove("pop"); void i.offsetWidth; i.classList.add("pop");
+  }
+  ultimo = d.cur;
+}
+function carregar(){
+  var s = document.createElement("script");
+  s.src = "dados.js?t=" + Date.now();
+  s.onload = function(){ aplicar(window.DADOS); s.remove(); };
+  s.onerror = function(){ s.remove(); };
+  document.head.appendChild(s);
+}
+setInterval(carregar, 500);
+carregar();
+</script>
+</body>
+</html>

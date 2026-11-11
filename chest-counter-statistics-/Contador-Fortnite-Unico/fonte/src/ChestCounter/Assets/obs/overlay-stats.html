@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Estatísticas – OBS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap">
+<style>
+html,body{margin:0;background:transparent;overflow:hidden}
+body{padding:10px;font-family:"Lilita One","Arial Black","Segoe UI",sans-serif;color:#fff}
+.card{display:inline-block;width:520px;padding:22px 22px 18px;border-radius:22px;
+  background:rgba(16,14,36,.84);border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.season{font-size:28px;white-space:nowrap}
+.season .c{color:#5cf0f2}
+.name{font-size:54px;line-height:1.05;margin:6px 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.level{font-size:30px;margin-bottom:14px}
+.level span{color:#5cf0f2;margin-right:10px}
+.row{display:flex;align-items:center;margin-top:10px;padding:14px 6px;border-radius:12px;border:1px solid rgba(255,255,255,.12)}
+.stat{flex:1;text-align:center;padding:0 4px;min-width:0;border-left:1px solid rgba(255,255,255,.22)}
+.stat:first-of-type{border-left:0}
+.stat b{display:block;font-weight:400;font-size:38px;line-height:1.05}
+.stat i{font-style:normal}
+.stat span{display:flex;align-items:center;justify-content:center;gap:5px;font-size:17px;white-space:nowrap}
+.si{width:20px;height:20px;flex:none}
+.blue{background:#20396a}.blue .stat span{color:#59a9ff}
+.purple{background:#4c2272}.purple .stat span{color:#e06bff}
+.red{background:#7a2136}.red .stat span{color:#ff6b8d}
+.green{background:#1f5a3a}.green .stat span{color:#5fe08f}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path fill="currentColor" d="M6 3h12v3h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 15.9V18h3v3H8v-3h3v-2.1A5 5 0 0 1 7.3 13H7a4 4 0 0 1-4-4V6h3V3zM5 8v1a2 2 0 0 0 2 2V8H5zm12 0v3a2 2 0 0 0 2-2V8h-2z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" d="M5 5l14 14M19 5L5 19"/></symbol>
+    <symbol id="i-pct" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.6"/><circle cx="17" cy="17" r="2.6"/></g></symbol>
+    <symbol id="i-pad" viewBox="0 0 24 24"><path fill="currentColor" d="M7 6h10a5 5 0 0 1 4.9 4l.9 5a3 3 0 0 1-5.2 2.4L16 15H8l-1.6 2.4A3 3 0 0 1 1.2 15l.9-5A5 5 0 0 1 7 6zm.5 3v1.5H6V12h1.5v1.5H9V12h1.5v-1.5H9V9H7.5zm9.5.5a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zm2.4 2.4a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"/><path d="M12 1.5v6M12 16.5v6M1.5 12h6M16.5 12h6"/></g><circle cx="12" cy="12" r="1.8" fill="currentColor"/></symbol>
+    <symbol id="i-kpm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10" cy="14" r="6"/><path d="M10 4v4M10 20v4M0 14h4M16 14h2"/><path d="M19 3v6M16 6h6"/></g></symbol>
+    <symbol id="i-skull" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C7 2 3.5 5.4 3.5 10c0 2.6 1.2 4.4 3 5.5V19a1.5 1.5 0 0 0 1.5 1.5h1v-2h1.5v2h2v-2H14v2h2a1.5 1.5 0 0 0 1.5-1.5v-3.5c1.8-1.1 3-2.9 3-5.5C20.5 5.4 17 2 12 2zM8.5 8.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm7 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM12 13l1.4 2.5h-2.8z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></g></symbol>
+    <symbol id="i-hourglass" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 2.5h12M6 21.5h12M7 2.5c0 5 3 6 5 9.5-2 3.500-5 4.500-5 9.500M17 2.500c0 5-3 6-5 9.500 2 3.500 5 4.500 5 9.500"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-assist" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="8" cy="7" r="3.2"/><circle cx="17" cy="8.500" r="2.600"/><path d="M2 20v-2.500A5 5 0 0 1 7 12.500h2a5 5 0 0 1 5 5V20zM15.500 13.500h1.200a4.500 4.500 0 0 1 4.800 4.500V20h-4.500v-2.500c0-1.500-.4-2.900-1.500-4z"/></g></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.500"/></g><circle cx="12" cy="12" r="1.600" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+<div class="card">
+  <div class="season"><span class="c" id="sc">CHAPTER 7</span> <span id="ss">SEASON MS</span></div>
+  <div class="name" id="nome">Jogador</div>
+  <div class="level"><span id="lvw">NÍVEL</span><span style="color:#fff;margin:0" id="lv">1</span></div>
+
+  <div class="row blue">
+    <div class="stat"><b id="w">0</b><span><svg class="si"><use href="#i-trophy"/></svg><i data-t="VITÓRIAS">VITÓRIAS</i></span></div>
+    <div class="stat"><b id="l">0</b><span><svg class="si"><use href="#i-x"/></svg><i data-t="DERROTAS">DERROTAS</i></span></div>
+    <div class="stat"><b id="wr">0.0%</b><span><svg class="si"><use href="#i-pct"/></svg><i data-t="% VITÓRIAS">% VITÓRIAS</i></span></div>
+    <div class="stat"><b id="m">0</b><span><svg class="si"><use href="#i-pad"/></svg><i data-t="PARTIDAS">PARTIDAS</i></span></div>
+  </div>
+
+  <div class="row purple">
+    <div class="stat"><b id="kd">0.00</b><span><svg class="si"><use href="#i-cross"/></svg>K/D</span></div>
+    <div class="stat"><b id="kpm">0.00</b><span><svg class="si"><use href="#i-kpm"/></svg><i data-t="KILLS/PARTIDA">KILLS/PARTIDA</i></span></div>
+    <div class="stat"><b id="k">0</b><span><svg class="si"><use href="#i-skull"/></svg>KILLS</span></div>
+  </div>
+
+  <div class="row red">
+    <div class="stat"><b id="pt">0H 00M</b><span><svg class="si"><use href="#i-clock"/></svg><i data-t="TEMPO DE JOGO">TEMPO DE JOGO</i></span></div>
+    <div class="stat"><b id="avg">0M 00S</b><span><svg class="si"><use href="#i-hourglass"/></svg><i data-t="TEMPO MÉDIO">TEMPO MÉDIO</i></span></div>
+  </div>
+
+  <div class="row green">
+    <div class="stat"><b id="dmg">0</b><span><svg class="si"><use href="#i-bolt"/></svg><i data-t="DANO">DANO</i></span></div>
+    <div class="stat"><b id="ast">0</b><span><svg class="si"><use href="#i-assist"/></svg><i data-t="ASSISTÊNCIAS">ASSISTÊNCIAS</i></span></div>
+    <div class="stat"><b id="acc">0.0%</b><span><svg class="si"><use href="#i-target"/></svg><i data-t="PRECISÃO">PRECISÃO</i></span></div>
+  </div>
+</div>
+<script>
+var TR={"VITÓRIAS": ["VICTOIRES", "WINS", "VICTORIAS"], "DERROTAS": ["DÉFAITES", "LOSSES", "DERROTAS"], "% VITÓRIAS": ["% VICTOIRES", "WIN %", "% VICTORIAS"], "PARTIDAS": ["PARTIES", "MATCHES", "PARTIDAS"], "KILLS/PARTIDA": ["KILLS/PARTIE", "KILLS/MATCH", "KILLS/PARTIDA"], "TEMPO DE JOGO": ["TEMPS DE JEU", "PLAY TIME", "TIEMPO DE JUEGO"], "TEMPO MÉDIO": ["TEMPS MOYEN", "AVG. TIME", "TIEMPO MEDIO"], "DANO": ["DÉGÂTS", "DAMAGE", "DAÑO"], "ASSISTÊNCIAS": ["ASSISTANCES", "ASSISTS", "ASISTENCIAS"], "PRECISÃO": ["PRÉCISION", "ACCURACY", "PRECISIÓN"]};
+var LV={fr:"NIVEAU",en:"LEVEL",es:"NIVEL",pt:"NÍVEL"};
+var IDX={fr:0,en:1,es:2};
+function idioma(d){ return d && d.idioma ? d.idioma : "pt"; }
+function traduzir(d){
+  var c = idioma(d), n = IDX[c];
+  el("lvw").textContent = LV[c] || LV.pt;
+  var ts = document.querySelectorAll("[data-t]");
+  for (var i = 0; i < ts.length; i++){
+    var k = ts[i].getAttribute("data-t");
+    ts[i].textContent = (n !== undefined && TR[k]) ? TR[k][n] : k;
+  }
+}
+function el(i){ return document.getElementById(i); }
+function pad(n){ return (n < 10 ? "0" : "") + n; }
+function aplicar(d){
+  if (!d) return;
+  traduzir(d);
+  var t = d.temporada || "";
+  var i = t.toUpperCase().indexOf("SEASON");
+  el("sc").textContent = i > 0 ? t.slice(0, i).trim() : t;
+  el("ss").textContent = i > 0 ? t.slice(i) : "";
+  el("nome").textContent = d.nome || "Jogador";
+  el("lv").textContent = d.nivelConta;
+  var v = d.vitorias || 0, der = d.derrotas || 0;
+  var jogos = (d.partidas !== undefined) ? d.partidas : v + der;
+  var k = d.kills || 0, seg = d.segundos || 0;
+  el("w").textContent = v;
+  el("l").textContent = der;
+  el("wr").textContent = (jogos ? v / jogos * 100 : 0).toFixed(1) + "%";
+  el("m").textContent = jogos;
+  var mortes = jogos - v;
+  el("kd").textContent = (mortes > 0 ? k / mortes : k).toFixed(2);
+  el("kpm").textContent = (jogos ? k / jogos : 0).toFixed(2);
+  el("k").textContent = k;
+  el("pt").textContent = Math.floor(seg / 3600) + "H " + pad(Math.floor(seg % 3600 / 60)) + "M";
+  var med = jogos ? seg / jogos : 0;
+  el("dmg").textContent = (d.danoJogadores || 0).toLocaleString(idioma(d) === "en" ? "en-US" : "fr-FR");
+  el("ast").textContent = d.assistencias || 0;
+  el("acc").textContent = (d.precisao || 0).toFixed(1) + "%";
+  el("avg").textContent = Math.floor(med / 60) + "M " + pad(Math.floor(med % 60)) + "S";
+}
+function carregar(){
+  var s = document.createElement("script");
+  s.src = "dados.js?t=" + Date.now();
+  s.onload = function(){ aplicar(window.DADOS); s.remove(); };
+  s.onerror = function(){ s.remove(); };
+  document.head.appendChild(s);
+}
+setInterval(carregar, 1000);
+carregar();
+</script>
+</body>
+</html>
