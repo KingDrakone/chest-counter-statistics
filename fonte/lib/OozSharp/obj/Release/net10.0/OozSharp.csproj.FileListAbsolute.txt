@@ -1,0 +1,9 @@
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\bin\Release\net10.0\OozSharp.deps.json
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\bin\Release\net10.0\OozSharp.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\OozSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\OozSharp.AssemblyInfoInputs.cache
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\OozSharp.AssemblyInfo.cs
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\OozSharp.csproj.CoreCompileInputs.cache
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\OozSharp.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\refint\OozSharp.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\OozSharp\obj\Release\net10.0\ref\OozSharp.dll
