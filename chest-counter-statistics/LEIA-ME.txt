@@ -1,0 +1,55 @@
+﻿CONTADOR FORTNITE ÚNICO (versão com janela + ícones + português)
+================================================================
+
+É o ChestCounter 1.5 (a janela: Home, Report, Overlay, Settings, Help) com o contador de baús antigo lá dentro e
+as tuas alterações: overlay em cartões com ícones, português, valores editáveis e um perfil de valores por conta.
+Um só programa: ChestCounter.exe.
+
+1) Compilar (uma vez)
+---------------------
+Não consegui compilar aqui, por isso o .exe tens de o gerar no teu PC:
+  a) Instala o .NET 10 SDK: https://dotnet.microsoft.com/download/dotnet/10.0
+  b) Duplo clique em COMPILAR.bat
+  c) No fim aparece ChestCounter.exe nesta pasta, ao lado do baus.ini.
+Esta versão juntou duas bases (a tua e a 1.5 com janela) sem poder compilar: pode haver um erro de compilação.
+Se acontecer, copia a mensagem e envia-ma que eu corrijo.
+
+2) O que traz
+-------------
+- Janela Home: mosaicos com nível, vitórias/derrotas, kills, partidas, tempo, dano, assistências e precisão.
+- Total de baús = histórico (baus.ini) + partidas novas das repetições. O lápis do Home continua a somar/tirar baús.
+- Overlay no jogo com 3 estilos: hud, classic e cards (cartões com ícones: nível, baús, vitórias, K/D, kills, tempo, dano...).
+  Escolhe em Overlay > Style. O estilo por defeito numa instalação nova é "cards".
+- Cartões para o OBS: %APPDATA%\ChestCounter\obs\overlay-obs.html e overlay-stats.html (Settings > Abrir a pasta dos ficheiros OBS).
+- Teclas do Stream Deck F13 a F24 (perfil em StreamDeck\, ícones em StreamDeck\icones):
+  F13 baús, F14 vitórias, F15 derrotas, F16 kills, F17 partidas, F18 nível (Shift = +10), F19 tempo (±10 min),
+  F20 atualizar, F21 abrir manual.json, F22 mostrar/esconder o overlay. Ctrl + tecla = tirar.
+- Settings > "Estatísticas à mão": corrige à mão nível, nome, temporada e qualquer número (baús, melhor marca, partidas,
+  vitórias, derrotas, kills, tempo, dano, assistências, precisão). Só os campos que mudares são guardados.
+  Os valores escritos passam a ser o ponto de partida; as partidas seguintes somam-se sozinhas.
+- Cada conta (perfil) tem os seus próprios valores manuais.
+- Todas as estatísticas das repetições em matches.csv (eliminações, assistências, precisão, dano, reanimações, materiais...)
+  e colunas Kills/Dano no relatório.
+- Português (pt-PT) como 4.º idioma (Settings > idioma, ou --lang pt): janela, relatório, avisos, ajuda e overlay, incluindo os textos novos da versão 1.5.
+
+3) Primeira execução
+--------------------
+Abre o ChestCounter.exe. Importa o baus.ini para %APPDATA%\ChestCounter\manual.json (só se esse ficheiro ainda não existir).
+Valores do baus.ini: baús totais 1811, partidas 371, melhor 1017, kills 1656, vitórias 103, derrotas 268.
+Só contam partidas jogadas DEPOIS da data "desde" do baus.ini (09/11/2026 23:46 UTC), para não somar duas vezes.
+Para voltar a importar estes valores: apaga %APPDATA%\ChestCounter\manual.json antes de abrir.
+O programa volta a ler as repetições que ainda estão no PC (versão de análise nova): pode demorar um pouco.
+Ativa as repetições no Fortnite: Definições > Jogo > Repetições > Gravar repetições.
+
+4) Nível da conta
+-----------------
+Lido da repetição (o nível do início da partida) e atualizado sozinho. Ao contrário da versão anterior, já não há limite
+de +10 e funciona mesmo que a repetição use outra escala de nível que o jogo (o programa aprende a diferença).
+Como a repetição guarda o nível do início da partida, uma subida a meio de uma partida só aparece na seguinte:
+para subir já, usa F18 ou Settings. O nível só sobe sozinho; para baixar usa Settings ou Ctrl+F18.
+
+5) Notas
+--------
+- A verificação de atualizações do GitHub fica desligada (a oficial substituiria esta versão).
+- A precisão (fração ou %) e a unidade da distância das repetições ainda estão por confirmar com dados reais.
+- Licenças: fonte\LICENSE e fonte\lib\LICENSE-FortniteReplayDecompressor.

@@ -1,0 +1,9 @@
+bin/
+obj/
+dist/
+dist-*/
+*.user
+.vs/
+*.replay
+# debug dumps of the parser (ParseMode.Debug)
+cmds/
