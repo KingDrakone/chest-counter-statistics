@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "4dqYgU+ILhk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\patri\\Downloads\\Contador-Fortnite-Unico-icones-v1.5-pt\\Contador-Fortnite-Unico-icones\\fonte\\lib\\Unreal.Encryption\\Unreal.Encryption.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\patri\\.nuget\\packages\\microsoft.net.illink.tasks\\10.0.13\\microsoft.net.illink.tasks.10.0.13.nupkg.sha512",
+    "C:\\Users\\patri\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.13\\microsoft.netcore.app.runtime.win-x64.10.0.13.nupkg.sha512",
+    "C:\\Users\\patri\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.13\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.13.nupkg.sha512",
+    "C:\\Users\\patri\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.13\\microsoft.aspnetcore.app.runtime.win-x64.10.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

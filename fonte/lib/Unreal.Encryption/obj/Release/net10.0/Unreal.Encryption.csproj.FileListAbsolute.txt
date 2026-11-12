@@ -1,0 +1,12 @@
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\bin\Release\net10.0\Unreal.Encryption.deps.json
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\bin\Release\net10.0\Unreal.Encryption.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\bin\Release\net10.0\OozSharp.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.Encryption.csproj.AssemblyReference.cache
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.Encryption.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.Encryption.AssemblyInfoInputs.cache
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.Encryption.AssemblyInfo.cs
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.Encryption.csproj.CoreCompileInputs.cache
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.E.E1811C82.Up2Date
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\Unreal.Encryption.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\refint\Unreal.Encryption.dll
+C:\Users\patri\Downloads\Contador-Fortnite-Unico-icones-v1.5-pt\Contador-Fortnite-Unico-icones\fonte\lib\Unreal.Encryption\obj\Release\net10.0\ref\Unreal.Encryption.dll
