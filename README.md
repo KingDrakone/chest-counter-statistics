@@ -64,6 +64,8 @@ In **Settings** you can edit your stats and change:
 - Replays folder
 - Automatic updates
 - OBS card name and season
+- 
+<img width="1920" height="1032" alt="Captura de tela 2026-11-12 205327" src="https://github.com/user-attachments/assets/9faec211-ccae-495a-a172-a59f4e79244a" />
 
 ## Keyboard shortcuts
 
